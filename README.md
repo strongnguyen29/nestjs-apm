@@ -13,7 +13,7 @@ $ npm i @strongnguyen/nestjs-apm
 ```
 import * as dotenv from 'dotenv';
 dotenv.config(); //
-import apm from 'nestjs-elastic-apm';
+import apm from '@strongnguyen/nestjs-apm';
 ...
 ```
 
@@ -21,7 +21,7 @@ import apm from 'nestjs-elastic-apm';
 
 ```
 ...
-import { ApmModule } from 'nestjs-elastic-apm';
+import { ApmModule } from '@strongnguyen/nestjs-apm';
 ...
 ```
 
@@ -41,7 +41,7 @@ export class AppModule { }
 
 ```
 ...
-import { ApmService } from 'nestjs-elastic-apm';
+import { ApmService } from '@strongnguyen/nestjs-apm';
 ...
 ...
 @Injectable()
