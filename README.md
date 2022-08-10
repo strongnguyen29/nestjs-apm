@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-$ npm i nestjs-elastic-apm
+$ npm i @strongnguyen/nestjs-apm
 ```
 
 ## NestJs config
@@ -61,15 +61,15 @@ span.end();
 
 ```
 # Override service name from package.json
-ELASTIC_APM_SERVICE_NAME
-# Use if APM Server requires a token
-ELASTIC_APM_SECRET_TOKEN
-# Use if APM Server uses API keys for authentication
-ELASTIC_APM_API_KEY
-# Set custom APM Server URL (default: http://localhost:8200)
-ELASTIC_APM_SERVER_URL
+APM_SERVICE_NAME
+# APM Server requires a token
+APM_SECRET_TOKEN
+# APM Server URL
+APM_SERVER_URL
 # Set 'true' value to enable APM agent
-ELASTIC_APM_ACTIVATE
+APM_ACTIVATE
+# Environment run app local / production / develop
+APM_ENV
 # Set comma-separated values to disable particular modules to be instrumented
-ELASTIC_APM_DISABLE_INSTRUMENTATIONS
+APM_DISABLE_INSTRUMENTATIONS
 ```
