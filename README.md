@@ -6,35 +6,32 @@
 $ npm i @strongnguyen/nestjs-apm
 ```
 
-## NestJs config
+## Use
 
-### main.ts (first line)
-
-```
-import * as dotenv from 'dotenv';
-dotenv.config(); //
-import apm from '@strongnguyen/nestjs-apm';
-...
-```
 
 ### app.module.ts
 
-```
-...
+```typescript
 import { ApmModule } from '@strongnguyen/nestjs-apm';
-...
-```
 
-```
 @Module({
-...
-imports: [
-...,
-ApmModule.register(),
-...
-]
+    imports: [
+        ApmModule.registerAsync(
+            imports: [ConfigModule],
+            useFactory: (configService: ConfigService) => ({
+                active: configService.get('APM_ACTIVATE'),
+                serviceName: configService.get('APM_SERVICE_NAME'),
+                serverUrl: configService.get('APM_SERVER_URL'),
+                secretToken: configService.get('APM_SECRET_TOKEN'),
+                environment: configService.get('APM_ENV'),
+                disableInstrumentations: 
+                  configService.get('APM_DISABLE_INSTRUMENTATIONS').split(','), // optional
+            }),
+            inject: [ConfigService],
+        )
+    ]
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 ### Usage in the service

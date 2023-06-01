@@ -19,7 +19,7 @@
     "Elastic",
     "APM"
   ],
-  "author": "Miha Primc",
+  "author": "StrongNguyen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/strongnguyen29/nestjs-apm/issues"
