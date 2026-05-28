@@ -12,7 +12,7 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "format": "prettier --write \"lib/**/*.ts\"",
-    "prepare": "husky",
+    "prepare": "husky install",
     "publish:npm": "npm run build && npm publish"
   },
   "repository": {

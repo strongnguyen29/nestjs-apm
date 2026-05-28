@@ -5,6 +5,10 @@ const prettierConfig = require('eslint-config-prettier');
 
 module.exports = [
   {
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '**/*.spec.ts'],
+  },
+  ...tsPlugin.configs['flat/recommended'],
+  {
     files: ['lib/**/*.ts'],
     languageOptions: {
       parser: tsParser,
@@ -19,14 +23,10 @@ module.exports = [
       prettier: prettierPlugin,
     },
     rules: {
-      ...tsPlugin.configs.recommended.rules,
       ...prettierConfig.rules,
       'prettier/prettier': 'error',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
-  },
-  {
-    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '**/*.spec.ts'],
   },
 ];

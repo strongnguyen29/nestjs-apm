@@ -3,7 +3,7 @@ import {
   NestInterceptor,
   ExecutionContext,
   CallHandler,
-  HttpException
+  HttpException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,10 +13,7 @@ import { ApmService } from './apm.service';
 export class ApmInterceptor implements NestInterceptor {
   constructor(private readonly apmService: ApmService) {}
 
-  intercept(
-    context: ExecutionContext,
-    next: CallHandler<unknown>
-  ): Observable<unknown> {
+  intercept(context: ExecutionContext, next: CallHandler<unknown>): Observable<unknown> {
     return next.handle().pipe(
       catchError((error) => {
         if (error instanceof HttpException) {
@@ -25,7 +22,7 @@ export class ApmInterceptor implements NestInterceptor {
           this.apmService.captureError(error);
         }
         throw error;
-      })
+      }),
     );
   }
 }
