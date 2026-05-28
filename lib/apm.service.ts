@@ -5,10 +5,10 @@ import { ApmModuleOptions } from './apm.interface';
 
 @Injectable()
 export class ApmService {
-  private apmAgent: APM.Agent;
+  private apmAgent!: APM.Agent;
   private readonly logger: Logger;
 
-  constructor(@Inject(APM_MODULE_OPTIONS_TOKEN) private options: ApmModuleOptions) {
+  constructor(@(Inject(APM_MODULE_OPTIONS_TOKEN) as ParameterDecorator) private options: ApmModuleOptions) {
     // constructor
     this.logger = new Logger(ApmService.name)
   }

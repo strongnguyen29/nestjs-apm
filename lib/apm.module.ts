@@ -13,7 +13,7 @@ export class ApmModule {
       providers: [
         {
           provide: APM_MODULE_OPTIONS_TOKEN,
-          useFactory: options.useFactory,
+          useFactory: options.useFactory!,
           inject: options.inject,
         },
         ApmService,
