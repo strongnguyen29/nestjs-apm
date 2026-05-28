@@ -13,16 +13,18 @@ export class ApmService {
   // Cast preserves runtime semantics unchanged. Remove when upgrading to NestJS v10+.
   constructor(
     @(Inject(APM_MODULE_OPTIONS_TOKEN) as ParameterDecorator)
-    private options: ApmModuleOptions,
+    private options: ApmModuleOptions
   ) {
     this.logger = new Logger(ApmService.name);
   }
 
   onModuleInit() {
-    this.logger.debug(' onModuleInit: APM config: ' + JSON.stringify(this.options))
+    this.logger.debug(
+      ' onModuleInit: APM config: ' + JSON.stringify(this.options)
+    );
     this.apmAgent = APM.start(this.options);
     if (this.apmAgent.isStarted()) {
-      this.logger.debug(' onModuleInit: APM is started')
+      this.logger.debug(' onModuleInit: APM is started');
     }
   }
 
@@ -30,7 +32,10 @@ export class ApmService {
     this.apmAgent.captureError(data);
   }
 
-  startTransaction(name?: string, options?: APM.TransactionOptions): APM.Transaction | null {
+  startTransaction(
+    name?: string,
+    options?: APM.TransactionOptions
+  ): APM.Transaction | null {
     return this.apmAgent.startTransaction(name, options);
   }
 

@@ -9,7 +9,7 @@ export class ApmModule {
   static registerAsync(options: ApmModuleAsyncOptions): DynamicModule {
     if (!options.useFactory) {
       throw new Error(
-        'ApmModule.registerAsync requires useFactory. useClass and useExisting are declared on the options interface but not yet supported.',
+        'ApmModule.registerAsync requires useFactory. useClass and useExisting are declared on the options interface but not yet supported.'
       );
     }
     return {
@@ -19,7 +19,7 @@ export class ApmModule {
         {
           provide: APM_MODULE_OPTIONS_TOKEN,
           useFactory: options.useFactory!,
-          inject: options.inject,
+          inject: options.inject
         },
         ApmService,
         {
