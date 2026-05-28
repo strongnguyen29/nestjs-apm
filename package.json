@@ -7,7 +7,12 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
-    "precommit": "lint-staged",
+    "lint": "eslint lib --max-warnings 0",
+    "lint:fix": "eslint lib --fix",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "format": "prettier --write \"lib/**/*.ts\"",
+    "prepare": "husky",
     "publish:npm": "npm run build && npm publish"
   },
   "repository": {
@@ -28,19 +33,18 @@
   "dependencies": {
     "elastic-apm-node": "^3.37.0"
   },
-  "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "devDependencies": {
     "@nestjs/common": "^9.0.6",
     "@nestjs/core": "^9.0.6",
     "@types/node": "^20.19.41",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.6",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
+    "prettier": "^3.8.3",
     "rimraf": "^5.0.10",
     "rxjs": "^7.5.6",
     "ts-node": "^10.9.2",
