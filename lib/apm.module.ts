@@ -7,6 +7,11 @@ import { APM_MODULE_OPTIONS_TOKEN } from './apm.const';
 
 export class ApmModule {
   static registerAsync(options: ApmModuleAsyncOptions): DynamicModule {
+    if (!options.useFactory) {
+      throw new Error(
+        'ApmModule.registerAsync requires useFactory. useClass and useExisting are declared on the options interface but not yet supported.',
+      );
+    }
     return {
       module: ApmModule,
       imports: options.imports,
