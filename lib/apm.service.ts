@@ -5,19 +5,24 @@ import { ApmModuleOptions } from './apm.interface';
 
 @Injectable()
 export class ApmService {
-  private apmAgent: APM.Agent;
+  private apmAgent!: APM.Agent;
   private readonly logger: Logger;
 
-  constructor(@Inject(APM_MODULE_OPTIONS_TOKEN) private options: ApmModuleOptions) {
-    // constructor
-    this.logger = new Logger(ApmService.name)
+  // TS5 + NestJS v9 workaround: Inject() returns PropertyDecorator & ParameterDecorator
+  // whose intersection fails TS5's strictFunctionTypes for ParameterDecorator.
+  // Cast preserves runtime semantics unchanged. Remove when upgrading to NestJS v10+.
+  constructor(
+    @(Inject(APM_MODULE_OPTIONS_TOKEN) as ParameterDecorator)
+    private options: ApmModuleOptions,
+  ) {
+    this.logger = new Logger(ApmService.name);
   }
 
   onModuleInit() {
-    this.logger.debug(' onModuleInit: APM config: ' + JSON.stringify(this.options))
+    this.logger.debug(' onModuleInit: APM config: ' + JSON.stringify(this.options));
     this.apmAgent = APM.start(this.options);
     if (this.apmAgent.isStarted()) {
-      this.logger.debug(' onModuleInit: APM is started')
+      this.logger.debug(' onModuleInit: APM is started');
     }
   }
 

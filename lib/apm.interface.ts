@@ -6,7 +6,7 @@ export interface ApmModuleOptions {
   secretToken: string;
   serverUrl: string;
   environment: 'local' | 'develop' | 'staging' | 'production' | string;
-  disableInstrumentations?: string[]
+  disableInstrumentations?: string[];
 }
 
 export interface ApmModuleOptionsFactory {
