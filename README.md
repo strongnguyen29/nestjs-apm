@@ -69,4 +69,20 @@ APM_ACTIVATE
 APM_ENV
 # Set comma-separated values to disable particular modules to be instrumented
 APM_DISABLE_INSTRUMENTATIONS
+
+# --- Elastic APM native variables (also supported) ---
+# Set 'true' value to enable APM agent
+ELASTIC_APM_ACTIVE
+# Override environment value
+ELASTIC_APM_ENVIRONMENT
+# Override the verification of SSL certificate.
+ELASTIC_APM_VERIFY_SERVER_CERT
+# Set the verbosity level for the agent’s logging. Possible levels are: trace (the most verbose logging, avoid in production), debug, info, warning, error, critical, and off (disable all logging).
+ELASTIC_APM_LOG_LEVEL
+# Enable capturing the HTTP body of incoming HTTP requests. Possible options are: off, all, errors, and transactions.
+ELASTIC_APM_CAPTURE_BODY
+# Capture apm error log stack traces. Possible options are: never, messages, always
+ELASTIC_APM_CAPTURE_ERROR_LOG_STACK_TRACES
+# Set this option to true to use the URL path as the transaction name if no other route could be determined. 
+ELASTIC_APM_USE_PATH_AS_TRANSACTION_NAME
 ```
